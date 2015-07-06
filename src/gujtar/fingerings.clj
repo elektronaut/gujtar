@@ -58,3 +58,12 @@
       (reduce into #{})
       (filter is-chord?)
       (sort-fingerings)))))
+
+(defn scale-position
+  ([ns fret] (scale-position ns fret e-standard))
+  ([ns fret tuning]
+   (let [min-fret #(>= % fret)]
+     (->>
+      (neck/slice-neck (neck/filter-neck ns tuning) fret)
+      (map last)
+      (map #(filter min-fret %))))))

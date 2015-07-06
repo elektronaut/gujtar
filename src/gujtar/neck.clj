@@ -46,12 +46,3 @@
             (first %)
             (filter reachable? (last %)))
           neck))))
-
-(defn scale-position
-  ([ns fret] (scale-position ns fret e-standard))
-  ([ns fret tuning]
-   (let [min-fret #(>= % fret)]
-     (->>
-      (slice-neck (filter-neck ns tuning) fret)
-      (map last)
-      (map #(filter min-fret %))))))
