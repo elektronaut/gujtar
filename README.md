@@ -1,5 +1,9 @@
 # Gujtar
 
+Gujtar is a weekend hack to learn Clojure and brush up on music theory at the same time.
+
+## Usage
+
 Let's start by checking out the chromatic scale.
 
 ```clojure
@@ -23,7 +27,7 @@ OK, that's not really all that exciting. Let's move on to scales.
 I have some notes, let's see which scales they're present in:
 
 ```clojure
-(scales/search [:c :d# :g :a#)
+(scales/search [:c :d# :g :a#))
 ; ([:d# :major] [:g :harmonic-minor] [:d# :mixolydian] [:f :natural-minor] [:g# :major]
 ; [:g :natural-minor] [:d :ahava-raba] [:c :dorian] [:c :minor-pentatonic]
 ; [:c :natural-minor] [:f :dorian] [:a# :dorian] [:f :melodic-minor-desc] [:f :mixolydian]
@@ -133,4 +137,28 @@ OK. I wonder what that pentatonic scale looks like on the fifth fret:
 ```clojure
 (fingerings/scale-position (scales/get-scale :a :minor-pentatonic) 5)
 ; ((5 8) (5 7) (5 7) (5 7) (5 8) (5 8))
+```
+
+Going back to chords, we can figure out how to play them:
+
+```clojure
+(fingerings/chord (chords/get-chord :a :min))
+; [nil 0 2 2 1 0]
+```
+
+It works even for alternative tunings:
+
+```clojure
+(fingerings/chord (chords/get-chord :a :sus2) [:d :a :d :f# :a :d])
+; [nil 0 2 3 2 2]
+```
+
+You can get a range of possible fingerings with:
+
+```clojure
+(fingerings/all (chords/get-chord :g :maj7))
+; ([3 2 0 0 3 2] [3 2 0 0 0 2] [3 2 4 4 3 2] [3 2 4 4 3 3] .. )
+
+(fingerings/all-with-inversions (chords/get-chord :g :maj7))
+; ([2 2 0 0 0 2] [2 2 0 0 3 3] [2 2 0 0 3 2] [3 2 0 0 3 2] .. )
 ```
