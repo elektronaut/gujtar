@@ -27,7 +27,7 @@ OK, that's not really all that exciting. Let's move on to scales.
 I have some notes, let's see which scales they're present in:
 
 ```clojure
-(scales/search-partial [:c :d# :g :a#))
+(scales/search-partial [:c :d# :g :a#])
 ; ([:d# :major] [:g :harmonic-minor] [:d# :mixolydian] [:f :natural-minor] [:g# :major]
 ; [:g :natural-minor] [:d :ahava-raba] [:c :dorian] [:c :minor-pentatonic]
 ; [:c :natural-minor] [:f :dorian] [:a# :dorian] [:f :melodic-minor-desc] [:f :mixolydian]
