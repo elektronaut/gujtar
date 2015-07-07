@@ -4,15 +4,34 @@
             [gujtar.notes :as notes]))
 
 (def intervals
-  {:major              [2 2 1 2 2 2]
-   :natural-minor      [2 1 2 2 1 2]
-   :harmonic-minor     [2 1 2 2 1 3]
-   :melodic-minor-asc  [2 1 2 2 2 2]
-   :melodic-minor-desc [2 2 1 2 2 1]
-   :minor-pentatonic   [3 2 2 3]
-   :dorian             [2 1 2 2 2 1]
-   :mixolydian         [2 2 1 2 2 1]
-   :ahava-raba         [1 3 1 2 1 2]})
+  {:chromatic            [1 1 1 1 1 1 1 1 1 1 1]
+   :major                [2 2 1 2 2 2]
+   :natural-minor        [2 1 2 2 1 2]
+   :harmonic-minor       [2 1 2 2 1 3]
+   :melodic-minor-asc    [2 1 2 2 2 2]
+   :melodic-minor-desc   [2 2 1 2 2 1]
+   :minor-pentatonic     [3 2 2 3]
+   :dorian               [2 1 2 2 2 1]
+   :mixolydian           [2 2 1 2 2 1]
+   :lydian-augmented     [2 2 2 2 1 2]
+   :aeolian-dominant     [2 2 1 2 1 2]
+   :phrygian-dominant    [1 3 1 2 1 2]
+   :half-diminished      [2 1 2 1 2 2]
+   :altered              [1 2 1 2 2 2]
+   :acoustic             [2 2 2 1 2 1]
+   :whole-tone           [2 2 2 2 2]
+   :augmented            [3 1 3 1 3]
+   :prometheus           [2 2 2 3 1]
+   :blues                [3 2 1 1 3]
+   :tritone              [1 3 2 1 3]
+   :two-semitone-tritone [1 1 4 1 1]
+   :double-harmonic      [1 3 1 2 1 3]
+   :hungarian-minor      [2 1 3 1 1 3]
+   :hungarian-gypsy      [2 1 3 1 1 2]
+   :ukrainian-dorian     [2 1 3 1 2 1]
+   :algerian             [2 1 3 1 1 3 1 2 1 2 2 1 3]
+   :enigmatic            [1 3 2 2 2 1]
+   :ahava-raba           [1 3 1 2 1 2]})
 
 (defn get-scale
   "Returns a set of notes from a root note and scale name"

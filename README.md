@@ -27,7 +27,7 @@ OK, that's not really all that exciting. Let's move on to scales.
 I have some notes, let's see which scales they're present in:
 
 ```clojure
-(scales/search [:c :d# :g :a#))
+(scales/search-partial [:c :d# :g :a#))
 ; ([:d# :major] [:g :harmonic-minor] [:d# :mixolydian] [:f :natural-minor] [:g# :major]
 ; [:g :natural-minor] [:d :ahava-raba] [:c :dorian] [:c :minor-pentatonic]
 ; [:c :natural-minor] [:f :dorian] [:a# :dorian] [:f :melodic-minor-desc] [:f :mixolydian]
@@ -39,7 +39,7 @@ Wow, that's a whole bunch. I happen to know we're in the key of C, so
 let's limit ourselves to that:
 
 ```clojure
-(scales/search [:c :d# :g :a#] (scales/in-key :c))
+(scales/search-partial [:c :d# :g :a#] (scales/in-key :c))
 ; ([:c :dorian] [:c :natural-minor] [:c :minor-pentatonic])
 ```
 
@@ -52,7 +52,14 @@ Those minor scales look promising. Let's check them out:
 ; [:c :d# :f :g :a#]
 ```
 
-Perfect. We can also do the same thing with chords:
+Perfect. It's also possible to search for exact matches:
+
+```clojure
+(scales/search [:a :b :c :d :e :f :g])
+; ([:d :dorian] [:a :natural-minor] [:e :phrygian] [:g :melodic-minor-desc] [:c :major] [:g :mixolydian] [:f :lydian])
+```
+
+We can do the same thing with chords:
 
 ```clojure
 (chords/search [:c :e :g])
