@@ -132,7 +132,7 @@ Alternate tunings work too:
 Of course, we're not limited to chords. I wonder what scale that solo I played was in:
 
 ```clojure
-(scales/search (fingerings/notes [[0 3 5] [3 5 7] [5 7] [5 7 9] [8]]))
+(scales/search-partial (fingerings/notes [[0 3 5] [3 5 7] [5 7] [5 7 9] [8]]))
 ; ([:d :dorian] [:e :natural-minor] [:a :minor-pentatonic] [:d :natural-minor]
 ; [:a :natural-minor] [:f :major] [:c :melodic-minor-desc] [:d :melodic-minor-desc]
 ; [:g :melodic-minor-desc] [:g :melodic-minor-asc] [:c :major] [:g :mixolydian]

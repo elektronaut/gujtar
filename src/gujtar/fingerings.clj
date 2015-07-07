@@ -1,6 +1,6 @@
 (ns gujtar.fingerings
   (require [gujtar.notes :as notes]
-           [gujtar.neck :as neck]))
+           [gujtar.fretboard :as fretboard]))
 
 ;; Temp
 (def e-standard [:e :a :d :g :b :e])
@@ -67,14 +67,14 @@
 (defn possible-fingerings
   "Finds all possible fingerings of a chord"
   ([ns] (possible-fingerings ns e-standard))
-  ([ns tuning] (possible-fingerings ns tuning neck/default-reach))
+  ([ns tuning] (possible-fingerings ns tuning fretboard/default-reach))
   ([ns tuning reach]
    (let [ns-set    (into #{} ns)
-         frets     (range 0 (inc neck/num-frets))
-         neck      (neck/nilable (neck/filter-neck ns tuning))
+         frets     (range 0 (inc fretboard/num-frets))
+         fretboard (fretboard/nilable (fretboard/filter-fretboard ns tuning))
          is-chord? #(= ns-set (into #{} (notes % tuning)))]
      (->>
-      (map #(neck/slice-neck neck % reach) frets)
+      (map #(fretboard/slice-fretboard fretboard % reach) frets)
       (map #(map last %))
       (map chord-permutations)
       (reduce into #{})
@@ -82,7 +82,7 @@
 
 (defn all
   ([ns] (all ns e-standard))
-  ([ns tuning] (all ns tuning neck/default-reach))
+  ([ns tuning] (all ns tuning fretboard/default-reach))
   ([ns tuning reach]
    (let [root (first ns)]
      (->>
@@ -93,7 +93,7 @@
 
 (defn all-with-inversions
   ([ns] (all-with-inversions ns e-standard))
-  ([ns tuning] (all-with-inversions ns tuning neck/default-reach))
+  ([ns tuning] (all-with-inversions ns tuning fretboard/default-reach))
   ([ns tuning reach]
    (let [root (first ns)]
      (->>
@@ -110,6 +110,6 @@
   ([ns fret tuning]
    (let [min-fret #(>= % fret)]
      (->>
-      (neck/slice-neck (neck/filter-neck ns tuning) fret)
+      (fretboard/slice-fretboard (fretboard/filter-fretboard ns tuning) fret)
       (map last)
       (map #(filter min-fret %))))))

@@ -3,7 +3,7 @@
             [gujtar.notes :as notes]
             [gujtar.scales :as scales]
             [gujtar.chords :as chords]
-            [gujtar.neck :as neck]
+            [gujtar.fretboard :as fretboard]
             [gujtar.fingerings :as fingerings]))
 
 ;;
